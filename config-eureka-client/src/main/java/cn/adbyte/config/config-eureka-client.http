@@ -3,4 +3,6 @@ GET http://localhost:8881
 ###
 
 #重新读取配置文件
-GET http://localhost:8881/bus/refresh
+POST http://localhost:8881/actuator/refresh
+
+###
