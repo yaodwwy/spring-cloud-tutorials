@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.config.server.EnableConfigServer;
 
 /**
+ *
+ * http://projects.spring.io/spring-cloud/spring-cloud.html#_spring_cloud_config
  * /{application}/{profile}[/{label}]
  * /{application}-{profile}.yml
  * /{label}/{application}-{profile}.yml

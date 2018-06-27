@@ -15,7 +15,7 @@ public class RootController {
 
     @Value("${server.port}")
     String port;
-    @RequestMapping("/hi")
+    @RequestMapping("/")
     public String home(@RequestParam String name) {
         return "hi "+name+",i am from port:" +port;
     }

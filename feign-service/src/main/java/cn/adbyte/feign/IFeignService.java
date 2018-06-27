@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @FeignClient(value = "eureka-client", fallback = FeignServiceHystrix.class)
 public interface IFeignService {
-    @RequestMapping(value = "/hi", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     String hi(@RequestParam(value = "name") String name);
 }
