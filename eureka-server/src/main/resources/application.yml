@@ -9,3 +9,28 @@ eureka:
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+---
+#########  以下内容非参数传递下未被调用，默认使用以上的配置
+# peer0
+spring:
+  profiles: peer0
+eureka:
+  instance:
+    hostname: peer0
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8769/eureka/
+
+---
+# peer1
+spring:
+  profiles: peer1
+server:
+  port: 8769
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

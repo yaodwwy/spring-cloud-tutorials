@@ -1,0 +1,15 @@
+---
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          password: your password
+          searchPaths: config-repo
+          uri: https://github.com/yaodwwy/spring-cloud-tutorials/
+          username: your username
+      label: master
+  application:
+    name: config-server
+server:
+  port: 8888
