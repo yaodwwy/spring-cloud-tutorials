@@ -1,0 +1,6 @@
+GET http://localhost:8769/ribbon/hi?name=adam
+
+###
+GET http://localhost:8769/feign/hi?name=adam
+
+###
