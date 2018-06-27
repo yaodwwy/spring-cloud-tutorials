@@ -3,4 +3,6 @@ include 'eureka-server',
         'eureka-client',
         'ribbon-service',
         'feign-service',
-        'zuul-service'
+        'zuul-service',
+        'config-eureka-server',
+        'config-eureka-client'
