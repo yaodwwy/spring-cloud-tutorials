@@ -2,11 +2,43 @@
 
 本文针对 [史上最简单的 SpringCloud 教程 | 终章](https://blog.csdn.net/forezp/article/details/70148833) 进行了版本升级和测试，测试过程中发现作者故意遗留很多问题(或是因版本升级出现)，导致不能直接成功测试的问题进行了修复和填坑。
 
-使用`Gradle4+`构建,
-如果 是Java9 或 java10 可能会遇到这个异常：ClassNotFoundException: javax.xml.bind.JAXBException
-在VM options 添加模块导入即可
+## 环境
 
-    --add-modules java.xml.bind 
+    Java 10 (VM options: --add-modules java.xml.bind)
+    Gradle 4.7
+    Spring Cloud Finchley.RELEASE 
+    Spring boot 2.0.3
+
+>提前说明
+
+    Java9 / java10 可能会遇到这个异常：
+    ClassNotFoundException: javax.xml.bind.JAXBException
+    配置 VM options: --add-modules java.xml.bind 即可
+
+
+## Spring boot Run Dashboard 测试顺序
+
+>第一篇： 服务的注册与发现（Eureka）
+
+    启动 EurekaServer    访问 http://localhost:8761/
+    启动 EurekaClientApp    访问 http://localhost:8762/?name=adam
+
+>第二篇: 服务消费者（rest+ribbon）
+    
+    启动 EurekaServer    访问 http://localhost:8761/
+    
+    在Dashboard中Copy Configuration 
+    Name: EurekaClientApp-0 
+    VM options: --add-modules java.xml.bind -Dserver.port=8762
+    启动 EurekaClientApp-0     访问 http://localhost:8762/?name=adam
+    
+    再Copy EurekaClientApp-1 端口改为8763
+    启动 EurekaClientApp-1     访问 http://localhost:8763/?name=adam
+    
+    启动 RibbonBalance     访问 http://localhost:8764/?name=adam
+    
+    
+    
 
 ### 服务的注册与发现 Eureka 
     新版的Cloud(Finchley.RELEASE)使用如下的依赖地址
