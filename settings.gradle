@@ -2,9 +2,15 @@ rootProject.name = 'spring-cloud-tutorials'
 include 'eureka-server',
         'eureka-client',
         'ribbon-service',
+        'ribbon-hystrix-service',
         'feign-service',
         'zuul-service',
+
+        'config-server',
+        'config-client',
         'config-eureka-server',
         'config-eureka-client',
+
+        'spring-boot-admin',
         'zipkin-service-hi',
         'zipkin-service-miya'

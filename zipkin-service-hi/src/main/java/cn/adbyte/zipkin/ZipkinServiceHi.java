@@ -1,5 +1,6 @@
 package cn.adbyte.zipkin;
 
+import brave.sampler.Sampler;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -28,6 +29,11 @@ public class ZipkinServiceHi {
     @Bean
     public RestTemplate getRestTemplate(){
         return new RestTemplate();
+    }
+
+    @Bean
+    public Sampler defaultSampler() {
+        return Sampler.ALWAYS_SAMPLE;
     }
 
     @RequestMapping("/hi")

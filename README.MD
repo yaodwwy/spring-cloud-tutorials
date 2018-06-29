@@ -23,7 +23,7 @@
     启动 EurekaServer    访问 http://localhost:8761/
     启动 EurekaClientApp    访问 http://localhost:8762/?name=adam
 
->第二篇: 服务消费者（rest+ribbon）
+>第二篇: 服务消费者（rest+ribbon  启动：服务端1个，发现端2个，负载均衡端1个）
     
     启动 EurekaServer    访问 http://localhost:8761/
     
@@ -37,8 +37,61 @@
     
     启动 RibbonBalance     访问 http://localhost:8764/?name=adam
     
+
     
+>第三篇：服务消费者（Feign）
+
+    启动上一篇的前三个（服务端1个，发现端2个）
+    启动 RibbonBalance     访问 http://localhost:8765/?name=adam
+
+可同时运行的项目列表：
+
+![Running](running.png)
+
+>第四篇:断路器（Hystrix）
     
+    启动 RibbonHystrixApp     
+    暂停其中一个发现端  
+    访问 http://localhost:8766/?name=adam
+如图：
+![pause](pause.png)
+
+>第五篇: 路由网关(zuul)
+
+    启动 ZuulApp
+    访问 http://localhost:8769/ribbon/?name=adam&token=adam_token
+    访问 http://localhost:8769/feign/?name=adam&token=adam_token
+
+>第六篇: 分布式配置中心(Spring Cloud Config)
+    
+    启动 ConfigServer    访问 http://localhost:8888/config-client-dev.properties
+    启动 ConfigClient    访问 http://localhost:8881/
+    
+>第七篇: 高可用的分布式配置中心(Spring Cloud Config)
+    
+    启动 ConfigEurekaServer    访问 http://localhost:8889/config-eureka-client-dev.properties
+    启动 ConfigEurekaClient    访问 http://localhost:8887/
+在读取配置文件不再写ip地址，而是服务名，这时如果配置服务部署多份，通过负载均衡高可用。
+![配置文件实例](config-instances.png)
+    
+>第八篇: 消息总线(Spring Cloud Bus)
+    
+    在上一篇基础上(ribbitMQ需要自行搭建)
+    修改Git上的配置文件
+    重新读取配置文件    POST http://localhost:8887/actuator/refresh
+
+>第九篇: 服务链路追踪(Spring Cloud Sleuth)
+    
+    下载zipkin
+    curl -sSL https://zipkin.io/quickstart.sh | bash -s
+    启动 java -jar zipkin.jar
+    访问 http://localhost:9411
+    启动 ZipkinServiceHi
+    启动 ZipkinServiceMiya
+    
+未完待续~
+
+
 
 ### 服务的注册与发现 Eureka 
     新版的Cloud(Finchley.RELEASE)使用如下的依赖地址

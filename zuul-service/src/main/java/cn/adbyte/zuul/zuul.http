@@ -1,6 +1,6 @@
-GET http://localhost:8769/ribbon/hi?name=adam
+GET http://localhost:8769/ribbon/?name=adam&token=adam_token
 
 ###
-GET http://localhost:8769/feign/hi?name=adam
+GET http://localhost:8769/feign/?name=adam&token=adam_token
 
 ###
