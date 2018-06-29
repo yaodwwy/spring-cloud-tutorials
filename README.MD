@@ -64,8 +64,8 @@
 
 >第六篇: 分布式配置中心(Spring Cloud Config)
     
-    启动 ConfigServer    访问 http://localhost:8888/config-client-dev.properties
-    启动 ConfigClient    访问 http://localhost:8881/
+    启动 ConfigServerApp    访问 http://localhost:8888/config-client-dev.properties
+    启动 ConfigClientApp    访问 http://localhost:8881/
     
 >第七篇: 高可用的分布式配置中心(Spring Cloud Config)
     
@@ -87,7 +87,29 @@
     启动 java -jar zipkin.jar
     访问 http://localhost:9411
     启动 ZipkinServiceHi
-    启动 ZipkinServiceMiya
+    启动 ZipkinServiceMiya 访问 http://localhost:8989/hi?name=adam
+    *************************************************************
+    zipkin测试一至未发现服务，此测试暂未通过！
+    下一步测试 spring boot admin 用于监控
+    
+>第十篇: 高可用的服务注册中心
+
+    停止 EurekaServer
+    在Dashboard中对EurekaServer  Copy Configuration 
+    Name: EurekaServerPeer-0
+    VM options: --add-modules java.xml.bind -Dspring.profiles.active=peer0
+    启动 EurekaServerPeer-0
+    重复再复制一份
+    Name: EurekaServerPeer-1
+    VM options: --add-modules java.xml.bind -Dspring.profiles.active=peer1
+    启动 EurekaServerPeer-1    
+    配置host:
+        127.0.0.1 peer1
+        127.0.0.1 peer0
+    访问 http://localhost:8761/
+    访问 http://localhost:8771/
+    
+    
     
 未完待续~
 
