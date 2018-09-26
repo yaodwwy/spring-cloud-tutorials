@@ -42,7 +42,7 @@
 >第三篇：服务消费者（Feign）
 
     启动上一篇的前三个（服务端1个，发现端2个）
-    启动 RibbonBalance     访问 http://localhost:8765/?name=adam
+    启动 FeignBalance     访问 http://localhost:8765/?name=adam
 
 可同时运行的项目列表：
 
